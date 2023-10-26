@@ -32,11 +32,13 @@ func _physics_process(delta):
 	# if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 	# 	velocity.y = JUMP_VELOCITY
 
-	# # Get the input direction and handle the movement/deceleration.
-	# # As good practice, you should replace UI actions with custom gameplay actions.
-	# var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	# var direction = (transform.basis * Vector3(input_dir.x, 0, 0)).normalized()
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var direction = (transform.basis * Vector3(input_dir.x, 0, 0)).normalized()
 	# if direction:
+		# Push the player in the direction of the input.
+		# this.add_force
 	# 	velocity.x = direction.x * SPEED
 	# 	velocity.z = direction.z * SPEED
 	# else:
