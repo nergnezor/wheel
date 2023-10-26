@@ -1,6 +1,6 @@
 extends Camera3D
 
-const SPEED = 5.0
+const SPEED = 20.0
 
 @onready var player = get_node("../player")
 
