@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://caxqbglkk60r5"]
+
+[ext_resource type="Script" path="res://CharacterBody3D.gd" id="1_lw0kb"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jef2b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mevju"]
+size = Vector3(60, 1, 60)
+
+[sub_resource type="BoxMesh" id="BoxMesh_aq5wg"]
+size = Vector3(60, 1, 60)
+
+[node name="main" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.456579, 2.69877, 8.73054)
+fov = 66.1823
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.50663, 0)
+script = ExtResource("1_lw0kb")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CharacterBody3D"]
+radius = 1.0
+radial_segments = 16
+rings = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("SphereShape3D_jef2b")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_mevju")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_aq5wg")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.342988, 0.93934, 0, -0.93934, 0.342988, -4.72119, 11.4785, -0.545883)
+shadow_enabled = true
