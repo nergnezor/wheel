@@ -19,7 +19,7 @@ func _process(delta):
 	if player == null:
 		return
 	print(player.global_transform.origin)
-	var target = player.global_transform.origin + Vector3(0, 2, 0)
+	var target = player.global_transform.origin + Vector3(0, 20, 10)
 	var camera_pos = transform.origin
 	var camera_to_target = target - camera_pos
 	var camera_to_target_normal = camera_to_target.normalized()
