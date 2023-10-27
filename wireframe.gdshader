@@ -1,4 +1,5 @@
 shader_type spatial;
+render_mode cull_disabled;
 
 uniform vec4 albedo : source_color = vec4(1.0);
 uniform vec4 wire_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
