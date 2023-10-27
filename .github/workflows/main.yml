@@ -11,3 +11,4 @@ jobs:
         ITCH_GAME: hju-l
         ITCH_USER: nergnezor
         PACKAGE: web
+        CHANNEL: html5
