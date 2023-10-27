@@ -14,7 +14,8 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	if input_dir.length() > 0:
 		var x_direction = (transform.basis * Vector3(input_dir.x, 0, 0)).normalized()
-		add_constant_central_force(x_direction *1000)
+		# add_constant_central_force(x_direction *1000)
+		apply_central_force(x_direction * 1000)
 	
 	# Reset button
 	if Input.is_action_just_pressed("ui_focus_next"):
