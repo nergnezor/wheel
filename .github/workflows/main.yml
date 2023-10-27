@@ -2,12 +2,12 @@ on:
   push:
 
 jobs:
-
-steps:
-- uses: manleydev/butler-publish-itchio-action@master
-  env:
-    BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
-    CHANNEL: windows
-    ITCH_GAME: example-project
-    ITCH_USER: username
-    PACKAGE: build/windows
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: manleydev/butler-publish-itchio-action@master
+      env:
+        BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+        ITCH_GAME: hju-l
+        ITCH_USER: nergnezor
+        PACKAGE: web
