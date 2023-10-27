@@ -1,20 +1,26 @@
 extends Node3D
 @onready var pipe = $pipe
-const N_PIPES = 1000
+@onready var track = $track_1
 
-func _ready(): 
-	var last_end_position = pipe.transform.origin + Vector3(0, -10, 0)
-	for i in range(1, N_PIPES):
-		print("copying ", i)
-		duplicate_below(pipe,i)
-		
-		
-func duplicate_below(org,i):
-	var another = org.duplicate()
-	another.rotate_x(0.01*i)
-	another.transform.origin.z = 0.1*i
-	var y_rotate_offset = 0.01*i
-	var bottom = Vector3(0, -1*i + y_rotate_offset, 0)
-	another.transform.origin = bottom
-	add_child(another)
+# const N_PIPES = 1000
+var tunnel_direction = Vector3(0, -1, 0)
+const TUNNEL_LENGTH = 200.0
+const TUNNEL_SEGMENT_HEIGHT = 0.5
+
+func _ready():
+	var path=track.get_child(0)
+
+	var length = 0
+	while length < TUNNEL_LENGTH:
+		# var follow = path.get_child(0)
+		# var pos = follow.get_global_transform()
+		var tunnel = pipe.duplicate()
+		var new_transform = path.transform
+		tunnel.transform = new_transform
+		# Add 90 degrees to the x rotation
+		tunnel.rotate(Vector3(1, 0, 0), PI / 2)
+		add_child(tunnel)
+		path.set_progress(length)
+		length += TUNNEL_SEGMENT_HEIGHT
+
 
