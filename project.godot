@@ -15,7 +15,12 @@ run/main_scene="res://node_3d.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=2160
+window/size/borderless=true
+
 [rendering]
 
-renderer/rendering_method="mobile"
 renderer/rendering_method.mobile="gl_compatibility"

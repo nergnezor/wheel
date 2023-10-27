@@ -4,9 +4,11 @@ const SPEED = 20.0
 
 @onready var player = get_node("../player")
 
+var initial_transform = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	# Store the initial camera transform for later use.
+	initial_transform = transform
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,8 +20,10 @@ func _process(delta):
 	# var player = get_node("/root/player")
 	if player == null:
 		return
-	print(player.global_transform.origin)
-	var target = player.global_transform.origin + Vector3(0, 20, 10)
+	if initial_transform == null:
+		return
+	# Set the camera offset from the initial offset.
+	var target = player.global_transform.origin + initial_transform.origin
 	var camera_pos = transform.origin
 	var camera_to_target = target - camera_pos
 	var camera_to_target_normal = camera_to_target.normalized()

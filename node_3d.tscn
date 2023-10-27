@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://caxqbglkk60r5"]
 
 [ext_resource type="Shader" path="res://wireframe.gdshader" id="2_derep"]
-[ext_resource type="Script" path="res://Camera3D.gd" id="2_lbska"]
+[ext_resource type="Script" path="res://camera.gd" id="2_jiad7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mevju"]
 size = Vector3(60, 1, 100)
@@ -34,7 +34,7 @@ radius = 1.0
 radial_segments = 20
 rings = 8
 
-[node name="main" type="Node3D"]
+[node name="world" type="Node3D"]
 
 [node name="mark" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.651038, 0.759043, 0, -0.759043, 0.651038, 0, -16.4282, -12.3211)
@@ -56,11 +56,13 @@ shape = SubResource("BoxShape3D_mevju")
 mesh = SubResource("BoxMesh_aq5wg")
 skeleton = NodePath("../..")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.342988, 0.93934, 0, -0.93934, 0.342988, -4.72119, 11.4785, -0.545883)
+[node name="light" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 1.15342e-06, -2.60825e-06, 2.62132e-06, -0.0114837, 0.999934, 1.12339e-06, -0.999934, -0.0114837, -4.72119, 21.5258, -0.739103)
 shadow_enabled = true
 
 [node name="player" type="RigidBody3D" parent="."]
+mass = 1000.0
+inertia = Vector3(651.51, 106.06, 106.06)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="player"]
 shape = SubResource("SphereShape3D_o6jnk")
@@ -75,4 +77,4 @@ keep_aspect = 0
 current = true
 fov = 57.5
 near = 0.042
-script = ExtResource("2_lbska")
+script = ExtResource("2_jiad7")
