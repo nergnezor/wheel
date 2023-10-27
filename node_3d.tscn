@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://caxqbglkk60r5"]
+[gd_scene load_steps=11 format=3 uid="uid://caxqbglkk60r5"]
 
+[ext_resource type="Script" path="res://player.gd" id="1_i3lc8"]
 [ext_resource type="Shader" path="res://wireframe.gdshader" id="2_derep"]
 [ext_resource type="Script" path="res://camera.gd" id="2_jiad7"]
 
@@ -63,6 +64,7 @@ shadow_enabled = true
 [node name="player" type="RigidBody3D" parent="."]
 mass = 1000.0
 inertia = Vector3(651.51, 106.06, 106.06)
+script = ExtResource("1_i3lc8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="player"]
 shape = SubResource("SphereShape3D_o6jnk")
