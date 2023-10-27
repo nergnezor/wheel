@@ -19,7 +19,7 @@ material = SubResource("ShaderMaterial_d3ol1")
 flip_faces = true
 top_radius = 5.0
 bottom_radius = 5.0
-height = 1.589
+height = 1.0
 cap_top = false
 cap_bottom = false
 
@@ -54,17 +54,15 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, -5.71, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="pipe"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.457975, 0.534706)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 mesh = SubResource("CylinderMesh_ee0p3")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="pipe"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.457975, 0.534706)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 shape = SubResource("ConcavePolygonShape3D_4dcsf")
 
 [node name="CSGTorus3D" type="CSGTorus3D" parent="pipe"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-inner_radius = 5.0
+inner_radius = 4.9
 outer_radius = 6.0
 sides = 64
 ring_sides = 12
@@ -106,11 +104,10 @@ transform = Transform3D(0.999628, -0.00106927, 0.0272675, -0.0227261, 0.520514, 
 transform = Transform3D(0.99863, -0.0518139, 0.00737421, 0, 0.140901, 0.990024, -0.052336, -0.988667, 0.140708, 0, 2, 2)
 keep_aspect = 0
 current = true
-fov = 76.7
+fov = 90.0
 near = 0.042
 script = ExtResource("2_jiad7")
 
 [node name="light" type="DirectionalLight3D" parent="camera"]
 transform = Transform3D(0.999628, 0.0153669, -0.0225537, -0.00106887, 0.847819, 0.530285, 0.0272703, -0.530063, 0.84752, 0.401512, -1.59011, -14.7818)
-visible = false
 shadow_enabled = true
