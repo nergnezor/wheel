@@ -17,6 +17,12 @@ func _physics_process(delta):
 		# add_constant_central_force(x_direction *1000)
 		apply_central_force(x_direction * 1000)
 	
+	
+	var lean = rotation.z
+#	if abs(lean) > 0.1:
+#			apply_central_force(Vector3(0,0,-lean * 1000))
+
+	
 	# Reset button
 	if Input.is_action_just_pressed("ui_focus_next"):
 		print("Reset")
