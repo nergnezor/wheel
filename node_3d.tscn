@@ -83,4 +83,5 @@ script = ExtResource("2_jiad7")
 
 [node name="light" type="DirectionalLight3D" parent="camera"]
 transform = Transform3D(0.999628, 0.0153669, -0.0225537, -0.00106887, 0.847819, 0.530285, 0.0272703, -0.530063, 0.84752, 0.401512, -1.59011, -14.7818)
+visible = false
 shadow_enabled = true
