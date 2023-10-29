@@ -15,7 +15,8 @@ func _physics_process(delta):
 	if input_dir.length() > 0:
 		var x_direction = (transform.basis * Vector3(input_dir.x, 0, 0)).normalized()
 		# add_constant_central_force(x_direction *1000)
-		apply_central_force(x_direction * 1000)
+		apply_central_force(x_direction * 100000)
+		print("hrj")
 	
 	
 	# var lean = rotation.z
@@ -26,8 +27,8 @@ func _physics_process(delta):
 #			apply_central_force(Vector3(0,0,-lean * 1000))
 
 	var turn = rotation.y
-	if abs(turn) > 0.1:
-		print("Turn: ", turn)
+#	if abs(turn) > 0.1:
+#		print("Turn: ", turn)
 		# set y rotation to 0
 #		transform.basis.y = Vector3(0,1,0)
 #		apply_torque_impulse(Vector3(0,turn * 10000,0))
