@@ -21,7 +21,12 @@ window/size/viewport_width=1280
 window/size/viewport_height=2160
 window/size/borderless=true
 
+[editor_plugins]
+
+enabled=PackedStringArray()
+
 [rendering]
 
 renderer/rendering_method="mobile"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
