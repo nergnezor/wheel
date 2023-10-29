@@ -90,10 +90,10 @@ radius = 1.0
 
 [sub_resource type="Curve3D" id="Curve3D_vtbks"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11.6286, -11.1635, 0, -11.6286, 11.1635, 0, -64.3634, 16.09, 3.92004, 1.66022, -41.5054, -3.92004, -1.66022, 41.5054, -0.000366211, -143.791, 161.491, 0, 12.0444, -33.8389, 0, -12.0444, 33.8389, 29.675, -268.307, 309.25, 0, -73.0495, -272.275, 0, 73.0495, 272.275, 29.675, -372.9, 759.168),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.000518799, -29.6692, -88.685, -0.000518799, 29.6692, 88.685, 0.0045929, 0.0238156, 93.0817),
+"tilts": PackedFloat32Array(0, 0)
 }
-point_count = 5
+point_count = 2
 
 [node name="world" type="Node3D"]
 script = ExtResource("1_e0shj")
@@ -136,13 +136,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 2.08616e-07, 0, -2.08616e-07, 1, 0, 0.457
 shape = SubResource("ConcavePolygonShape3D_b457j")
 
 [node name="player" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-16, -3.48787e-16, 3.48787e-16, 1, 2.08165e-12, 2.08165e-12, -4)
 mass = 10000.0
 contact_monitor = true
 script = ExtResource("1_i3lc8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="player"]
-transform = Transform3D(-0.140746, 0.990046, -1.37144e-18, -0.98861, -0.140542, 0.0538348, 0.053299, 0.00757704, 0.99855, 0, 0, 0)
+transform = Transform3D(-4.26917e-08, -0.976673, -0.214735, 1, -4.37114e-08, -3.48787e-16, -9.38638e-09, -0.214735, 0.976672, 0, 0, 0)
 mesh = SubResource("TorusMesh_wjap3")
 skeleton = NodePath("")
 
@@ -170,12 +170,13 @@ shadow_enabled = true
 
 [node name="track_1" type="Path3D" parent="."]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 curve = SubResource("Curve3D_vtbks")
 
 [node name="path" type="PathFollow3D" parent="track_1"]
 unique_name_in_owner = true
-transform = Transform3D(-1, -1.48963e-07, 2.46883e-08, 0, 0.163503, 0.986535, -1.50996e-07, 0.986535, -0.163503, 0, -23.6804, 3.14457)
-progress = 23.8923
+transform = Transform3D(-1, -7.13086e-06, 5.56958e-06, -8.52955e-06, 0.94833, -0.31726, -3.01951e-06, -0.31726, -0.94833, 0.0045929, 0.0238156, 93.0817)
+progress = 99.6852
 
 [node name="follow" type="Node3D" parent="track_1/path"]
 unique_name_in_owner = true

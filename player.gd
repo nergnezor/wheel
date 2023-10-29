@@ -18,10 +18,21 @@ func _physics_process(delta):
 		apply_central_force(x_direction * 1000)
 	
 	
-	var lean = rotation.z
-#	if abs(lean) > 0.1:
+	# var lean = rotation.z
+	# if abs(lean) > 0.1:
+	# 	print("Lean: ", lean)
+#		transform.basis.z = Vector3(0,0,1)
+		# transform.basis = Basis(Vector3(0,0,1), lean * 0.1) * transform.basis
 #			apply_central_force(Vector3(0,0,-lean * 1000))
 
+	var turn = rotation.y
+	if abs(turn) > 0.1:
+		print("Turn: ", turn)
+		# set y rotation to 0
+#		transform.basis.y = Vector3(0,1,0)
+#		apply_torque_impulse(Vector3(0,turn * 10000,0))
+		# transform.basis = Basis(Vector3(0,1,0), turn * 0.1) * transform.basis
+		# apply_central_force(Vector3(0,0,-lean * 1000))
 	
 	# Reset button
 	if Input.is_action_just_pressed("ui_focus_next"):
