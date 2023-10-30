@@ -4,17 +4,15 @@ extends Node3D
 
 # const N_PIPES = 1000
 var tunnel_direction = Vector3(0, -1, 0)
-const TUNNEL_LENGTH = 500.0
+# const TUNNEL_LENGTH = 500.0
 const TUNNEL_SEGMENT_HEIGHT = 1.0
 
 func _ready():
-	var path=track.get_child(0)
-
+	var path: PathFollow3D = track.get_child(0)
+	path.set_progress_ratio(1.0)
+	var track_length = path.get_progress()
 	var length = 0
-	# var last_rotate = path.transform.basis
-	while length < TUNNEL_LENGTH:
-		# var follow = path.get_child(0)
-		# var pos = follow.get_global_transform()
+	while length < track_length:
 		var tunnel = pipe.duplicate()
 		var new_transform = path.transform
 		tunnel.transform = new_transform
