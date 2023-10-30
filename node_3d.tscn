@@ -107,7 +107,23 @@ material = SubResource("StandardMaterial3D_rsj43")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t3rnj"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_71fur"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+albedo_color = Color(0, 0.866667, 0.870588, 1)
+emission_enabled = true
+emission = Color(1, 1, 0.607843, 1)
+emission_energy_multiplier = 16.0
+emission_operator = 1
+backlight = Color(1, 0.788235, 1, 1)
+
 [sub_resource type="SphereMesh" id="SphereMesh_ekp38"]
+material = SubResource("StandardMaterial3D_71fur")
+radius = 0.05
+height = 0.1
+radial_segments = 4
+rings = 4
 
 [sub_resource type="Curve3D" id="Curve3D_vtbks"]
 _data = {
@@ -175,13 +191,19 @@ mesh = SubResource("SphereMesh_tm0dr")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="player/CollisionShape3D2/MeshInstance3D"]
 transform = Transform3D(1, -1.21652e-31, 0, -1.21652e-31, 1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
 light_color = Color(1, 1, 0.792157, 1)
 light_energy = 1.434
 
 [node name="GPUParticlesAttractorSphere3D" type="GPUParticlesAttractorSphere3D" parent="player/CollisionShape3D2"]
 visible = false
+<<<<<<< Updated upstream
+=======
+strength = 26.37
+>>>>>>> Stashed changes
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="player/CollisionShape3D2/GPUParticlesAttractorSphere3D"]
+amount = 2527
 process_material = SubResource("ParticleProcessMaterial_t3rnj")
 draw_pass_1 = SubResource("SphereMesh_ekp38")
 
@@ -204,7 +226,11 @@ curve = SubResource("Curve3D_vtbks")
 
 [node name="path" type="PathFollow3D" parent="track_1"]
 unique_name_in_owner = true
+<<<<<<< Updated upstream
 transform = Transform3D(-1, -7.13098e-06, 5.56958e-06, -8.52966e-06, 0.94833, -0.31726, -3.01948e-06, -0.31726, -0.94833, 0.0045929, 0.0238144, 93.0817)
+=======
+transform = Transform3D(-1, -7.13091e-06, 5.56958e-06, -8.5296e-06, 0.94833, -0.31726, -3.0195e-06, -0.31726, -0.94833, 0.0045929, 0.0238156, 93.0817)
+>>>>>>> Stashed changes
 progress = 99.6852
 
 [node name="follow" type="Node3D" parent="track_1/path"]
