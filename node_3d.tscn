@@ -55,21 +55,22 @@ data = PackedVector3Array(0.4901, 0.7945, 4.9759, 0, 0.7945, 5, 0, 0.4767, 5, 0.
 backface_collision = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n8p2k"]
-albedo_color = Color(1, 1, 1, 0)
+albedo_color = Color(0.403922, 0.686275, 0.952941, 0.482353)
 metallic = 1.0
 metallic_specular = 1.0
 emission_enabled = true
 emission = Color(1, 0.815686, 0, 1)
-emission_energy_multiplier = 0.7
+emission_energy_multiplier = 0.67
 
 [sub_resource type="SphereMesh" id="SphereMesh_tm0dr"]
 material = SubResource("StandardMaterial3D_n8p2k")
+radius = 0.57
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iw2qy"]
 render_priority = 0
 shader = ExtResource("4_vcyoi")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/wire_color = Color(0, 0, 0, 1)
+shader_parameter/albedo = Color(1, 0.603922, 0.513726, 0.443137)
+shader_parameter/wire_color = Color(0.423529, 0, 0.12549, 0.811765)
 shader_parameter/wire_width = 4.399
 shader_parameter/wire_smoothness = 0.1
 
@@ -138,16 +139,13 @@ transform = Transform3D(-4.37114e-08, -0.485, 0, 1, -2.12e-08, 0, 0, 0, 1, 0, 0,
 shape = SubResource("SphereShape3D_s0qnu")
 
 [node name="camera" type="Camera3D" parent="."]
-transform = Transform3D(-1, 4.51568e-08, -7.48572e-08, 2.98655e-16, 0.856267, 0.516533, 8.74228e-08, 0.516533, -0.856267, 0, 4, -2.99)
+transform = Transform3D(-1, -2.26267e-08, 8.44439e-08, 3.36902e-16, 0.965926, 0.258819, -8.74228e-08, 0.258819, -0.965926, 2.08165e-12, 2, -3)
 keep_aspect = 0
-current = true
 size = 50.0
-near = 0.042
 script = ExtResource("2_jiad7")
 
 [node name="light" type="DirectionalLight3D" parent="camera"]
 transform = Transform3D(0.999628, 0.0153669, -0.0225537, -0.00792931, 0.954295, 0.298762, 0.0261139, -0.298472, 0.954061, 0.557781, -0.616606, 3.32225)
-visible = false
 shadow_enabled = true
 
 [node name="track_1" type="Path3D" parent="."]
