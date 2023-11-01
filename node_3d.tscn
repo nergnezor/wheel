@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://caxqbglkk60r5"]
+[gd_scene load_steps=19 format=3 uid="uid://caxqbglkk60r5"]
 
 [ext_resource type="Script" path="res://pipe.gd" id="1_e0shj"]
 [ext_resource type="Script" path="res://player.gd" id="1_i3lc8"]
 [ext_resource type="Shader" path="res://pipe.gdshader" id="2_i1j5d"]
 [ext_resource type="Script" path="res://camera.gd" id="2_jiad7"]
+[ext_resource type="Shader" path="res://wireframe.gdshader" id="4_vcyoi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ea3nv"]
 sky_top_color = Color(1, 0.921569, 0.670588, 1)
@@ -64,57 +65,22 @@ emission_energy_multiplier = 0.7
 [sub_resource type="SphereMesh" id="SphereMesh_tm0dr"]
 material = SubResource("StandardMaterial3D_n8p2k")
 
-[sub_resource type="Shader" id="Shader_61uby"]
-code = "shader_type spatial;
-render_mode cull_disabled;
-
-uniform vec4 albedo : source_color = vec4(1.0);
-uniform vec4 wire_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
-uniform float wire_width : hint_range(0.0, 40.0) = 5.0;
-uniform float wire_smoothness : hint_range(0.0, 0.1) = 0.01;
-
-varying vec3 barys;
-
-void vertex() {
-	int index = VERTEX_ID % 3;
-	switch (index) {
-		case 0:
-			barys = vec3(1.0, 0.0, 0.0);
-			break;
-		case 1:
-			barys = vec3(0.0, 1.0, 0.0);
-			break;
-		case 2:
-			barys = vec3(0.0, 0.0, 1.0);
-			break;
-	}
-}
-
-void fragment() {
-	vec3 deltas = fwidth(barys);
-	vec3 barys_s = smoothstep(deltas * wire_width - wire_smoothness, deltas * wire_width + wire_smoothness, barys);
-	float wires = min(barys_s.x, min(barys_s.y, barys_s.z));
-	ALBEDO = mix(wire_color.rgb, albedo.rgb, wires);
-}"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a370e"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iw2qy"]
 render_priority = 0
-shader = SubResource("Shader_61uby")
-shader_parameter/albedo = Color(1, 0.407843, 0.533333, 1)
-shader_parameter/wire_color = Color(1, 1, 1, 1)
-shader_parameter/wire_width = 1.0
-shader_parameter/wire_smoothness = 0.01
+shader = ExtResource("4_vcyoi")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/wire_color = Color(0, 0, 0, 1)
+shader_parameter/wire_width = 4.399
+shader_parameter/wire_smoothness = 0.1
 
-[sub_resource type="TorusMesh" id="TorusMesh_wjap3"]
-material = SubResource("ShaderMaterial_a370e")
-rings = 22
-ring_segments = 16
+[sub_resource type="SphereMesh" id="SphereMesh_hb67h"]
+material = SubResource("ShaderMaterial_iw2qy")
+radius = 1.0
+radial_segments = 17
+rings = 20
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_s0qnu"]
 radius = 1.0
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_qmwln"]
-radius = 0.3
 
 [sub_resource type="Curve3D" id="Curve3D_vtbks"]
 _data = {
@@ -159,21 +125,17 @@ script = ExtResource("1_i3lc8")
 unique_name_in_owner = true
 transform = Transform3D(1, -1.21652e-31, 0, -1.21652e-31, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("SphereMesh_tm0dr")
-skeleton = NodePath("../orbshape")
+skeleton = NodePath("")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="player"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -2.64698e-23, -2.64698e-23, 1, 0, 0, 0)
-mesh = SubResource("TorusMesh_wjap3")
+mesh = SubResource("SphereMesh_hb67h")
 skeleton = NodePath("")
 
 [node name="wheel" type="CollisionShape3D" parent="player"]
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, -0.485, 0, 1, -2.12e-08, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("SphereShape3D_s0qnu")
-
-[node name="orbshape" type="CollisionShape3D" parent="player"]
-visible = false
-shape = SubResource("SphereShape3D_qmwln")
 
 [node name="camera" type="Camera3D" parent="."]
 transform = Transform3D(-1, 4.51568e-08, -7.48572e-08, 2.98655e-16, 0.856267, 0.516533, 8.74228e-08, 0.516533, -0.856267, 0, 4, -2.99)
@@ -195,7 +157,7 @@ curve = SubResource("Curve3D_vtbks")
 
 [node name="path" type="PathFollow3D" parent="track_1"]
 unique_name_in_owner = true
-transform = Transform3D(-1, 1.48843e-05, -0.000256017, 1.36424e-12, 0.998306, 0.0580397, 0.000256451, 0.0580397, -0.998306, 0, 0, 0)
+transform = Transform3D(-1, 1.48843e-05, -0.000256017, 9.09495e-13, 0.998306, 0.0580397, 0.000256451, 0.0580397, -0.998306, 0, 0, 0)
 
 [node name="track_2" type="Path3D" parent="."]
 unique_name_in_owner = true
@@ -203,5 +165,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 4.56116, 48.0983
 curve = SubResource("Curve3D_ruckd")
 
 [node name="path" type="PathFollow3D" parent="track_2"]
-transform = Transform3D(-1, -0.000101765, 1.89926e-05, -8.10022e-05, 0.654925, -0.755683, 6.44644e-05, -0.755683, -0.654925, 0.005, 0, 0)
+transform = Transform3D(1, 0.000321832, 9.53672e-06, -0.000308918, 0.967364, -0.253358, -9.07656e-05, 0.253358, 0.967364, 0.00476074, -17.769, -8.35699)
 progress = 99.6852

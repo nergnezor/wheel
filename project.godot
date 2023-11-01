@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=1280
 window/size/viewport_height=2160
+window/size/initial_position_type=0
 window/size/borderless=true
 
 [editor_plugins]
