@@ -10,33 +10,9 @@ func _ready():
 	start_transform = transform
 
 func _physics_process(delta):
-	# Add force to the player
-	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	if input_dir.length() > 0:
-		var x_direction = (transform.basis * Vector3(input_dir.x, 0, 0)).normalized()
-		# add_constant_central_force(x_direction *1000)
-		apply_central_force(x_direction * 100000)
-		print("hrj")
-	
-	
-	# var lean = rotation.z
-	# if abs(lean) > 0.1:
-	# 	print("Lean: ", lean)
-#		transform.basis.z = Vector3(0,0,1)
-		# transform.basis = Basis(Vector3(0,0,1), lean * 0.1) * transform.basis
-#			apply_central_force(Vector3(0,0,-lean * 1000))
 
-	var turn = rotation.y
-#	if abs(turn) > 0.1:
-#		print("Turn: ", turn)
-		# set y rotation to 0
-#		transform.basis.y = Vector3(0,1,0)
-#		apply_torque_impulse(Vector3(0,turn * 10000,0))
-		# transform.basis = Basis(Vector3(0,1,0), turn * 0.1) * transform.basis
-		# apply_central_force(Vector3(0,0,-lean * 1000))
-	
 	# Reset button
-	if Input.is_action_just_pressed("ui_focus_next"):
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		print("Reset")
 		transform = start_transform
 		var camera = get_node("../camera")
@@ -45,9 +21,12 @@ func _physics_process(delta):
 		angular_velocity = Vector3()
 
 	# Pause if space is pressed
-	if Input.is_action_just_pressed("ui_accept"):
-		paused = !paused
-		print("Paused: ", paused)
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		# paused = !paused
+		# Add forward rotation force
+		apply_central_impulse(Vector3(0, 0, 1) * 100000)
+		print("Accelerate: ")
+
 	
 	if paused: 
 		linear_velocity = Vector3()
