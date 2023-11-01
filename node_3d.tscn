@@ -64,7 +64,7 @@ emission_energy_multiplier = 0.67
 
 [sub_resource type="SphereMesh" id="SphereMesh_tm0dr"]
 material = SubResource("StandardMaterial3D_n8p2k")
-radius = 0.57
+radius = 0.7
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iw2qy"]
 render_priority = 0
@@ -85,7 +85,7 @@ radius = 1.0
 
 [sub_resource type="Curve3D" id="Curve3D_vtbks"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.000244143, -0.464113, -23.2701, -0.000244143, 0.464113, 23.2701, 0.00476074, -1.0794, 18.5661),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.000244141, -0.725453, -1.26955, -0.000244141, 0.725453, 1.26955, 0.032938, -0.0174084, 13.0375),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -118,6 +118,7 @@ visible = false
 shape = SubResource("ConcavePolygonShape3D_4dcsf")
 
 [node name="player" type="RigidBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 3.48787e-16, 1, -4.37114e-08, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, 0, 0, 0)
 mass = 10.0
 contact_monitor = true
 script = ExtResource("1_i3lc8")
@@ -129,13 +130,13 @@ mesh = SubResource("SphereMesh_tm0dr")
 skeleton = NodePath("")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="player"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -2.64698e-23, -2.64698e-23, 1, 0, 0, 0)
+transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-16, -3.48787e-16, 3.48787e-16, 1, 0, 0, 0)
 mesh = SubResource("SphereMesh_hb67h")
 skeleton = NodePath("")
 
 [node name="wheel" type="CollisionShape3D" parent="player"]
 unique_name_in_owner = true
-transform = Transform3D(-4.37114e-08, -0.485, 0, 1, -2.12e-08, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1, -1.74393e-16, 3.48787e-16, 3.48787e-16, 0.5, -3.48787e-16, -3.48787e-16, 1.74393e-16, 1, 0, 0, 0)
 shape = SubResource("SphereShape3D_s0qnu")
 
 [node name="camera" type="Camera3D" parent="."]

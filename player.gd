@@ -36,9 +36,23 @@ func _physics_process(delta):
 #		spin_direction *= -1
 		
 	
-	var lean_angle = get_rotation()
-	print("Lean angle: ", lean_angle)
+	var angle = get_rotation_degrees().z
+	const MAXANGLE:int = 360
+	while angle < 0:
+		angle += MAXANGLE
+	angle -= 90
+#	var switch = false
+#	if angle > 90:
+#		angle -= 180
+#		switch = true
+	print("Lean angle: ", angle)
 	# Handle negative angles
-	# if abs(lean_angle) > 0:
+	if abs(angle) > 2 and abs(angle) <90:
+		if angle < 0:
+			# rotate_z(0.1)
+			apply_torque(Vector3(0,0, 1) * 100)
+		else:
+			# rotate_z(-0.1)
+			apply_torque(Vector3(0,0, -1) * 100)
 #		apply_torque(Vector3(0,0, 1) * 100*-lean_angle)
 		# spin_direction *= -1
