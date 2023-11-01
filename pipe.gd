@@ -11,7 +11,7 @@ func _ready():
 	var path: PathFollow3D = track.get_child(0)
 	path.set_progress_ratio(1.0)
 	var track_length = path.get_progress()
-	var length = 0
+	var length = TUNNEL_SEGMENT_HEIGHT
 	while length < track_length:
 		var tunnel = pipe.duplicate()
 		var new_transform = path.transform
@@ -22,5 +22,7 @@ func _ready():
 		add_child(tunnel)
 		path.set_progress(length)
 		length += TUNNEL_SEGMENT_HEIGHT
+
+	remove_child(pipe)
 
 
