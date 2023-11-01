@@ -6,6 +6,9 @@ var paused = false
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 # var linear_velocity = Vector3()
 var start_transform
+var was_pressed = false
+var spin_direction = 1
+
 func _ready():
 	start_transform = transform
 
@@ -22,11 +25,12 @@ func _physics_process(delta):
 
 	# Pause if space is pressed
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		# paused = !paused
-		# Add forward rotation force
-		apply_central_impulse(Vector3(0, 0, 1) * 100000)
-		print("Accelerate: ")
-
+		apply_torque(Vector3(1*spin_direction,0, 0) * 100)
+		was_pressed = true
+	elif was_pressed:
+		was_pressed = false
+#		spin_direction *= -1
+		
 	
 	if paused: 
 		linear_velocity = Vector3()
