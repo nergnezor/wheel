@@ -21,10 +21,15 @@ window/size/viewport_width=1280
 window/size/viewport_height=2160
 window/size/initial_position_type=0
 window/size/borderless=true
+window/default_gravity=9.8
 
 [editor_plugins]
 
 enabled=PackedStringArray()
+
+[physics]
+
+3d/default_gravity=19.6
 
 [rendering]
 

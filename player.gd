@@ -24,35 +24,22 @@ func _physics_process(delta):
 
 	# Pause if space is pressed
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		apply_torque(Vector3(1*spin_direction,0, 0) * 100)
+		apply_torque(Vector3(1*spin_direction,0, 0) * 200)
 		# Set emission color of material
-
 		material.emission = Color(0.2,0.5,1)
 		
 		was_pressed = true
+		# Lock rotation
+		# print(rot)
+		# rot.x = 0
+		# rot.z = 90
 	elif was_pressed:
 		material.emission = Color(1,0.8,0)
 		was_pressed = false
-#		spin_direction *= -1
 		
-	
-	var angle = get_rotation_degrees().z
-	const MAXANGLE:int = 360
-	while angle < 0:
-		angle += MAXANGLE
-	angle -= 90
-#	var switch = false
-#	if angle > 90:
-#		angle -= 180
-#		switch = true
-	print("Lean angle: ", angle)
-	# Handle negative angles
-	if abs(angle) > 2 and abs(angle) <90:
-		if angle < 0:
-			# rotate_z(0.1)
-			apply_torque(Vector3(0,0, 1) * 100)
-		else:
-			# rotate_z(-0.1)
-			apply_torque(Vector3(0,0, -1) * 100)
-#		apply_torque(Vector3(0,0, 1) * 100*-lean_angle)
-		# spin_direction *= -1
+#	var rotation_global = global_transform.basis.get_euler()
+#	var rot = get_rotation()
+#	rot.z = rotation_global.z
+#	rot.y = rotation_global.y
+#	set_rotation(rot)
+

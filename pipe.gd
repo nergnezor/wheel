@@ -6,7 +6,7 @@ extends Node3D
 # const N_PIPES = 1000
 var tunnel_direction = Vector3(0, -1, 0)
 # const TUNNEL_LENGTH = 500.0
-const TUNNEL_SEGMENT_HEIGHT = 1.0
+const TUNNEL_SEGMENT_HEIGHT = 1.1
 
 func _ready():
 	var track_parts = [track_1, track_2]
