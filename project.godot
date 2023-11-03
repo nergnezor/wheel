@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=2160
+window/size/viewport_width=1000
+window/size/viewport_height=1000
 window/size/initial_position_type=0
 window/size/borderless=true
 window/default_gravity=9.8

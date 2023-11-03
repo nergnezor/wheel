@@ -1,6 +1,6 @@
 extends Node3D
 @onready var pipe = $pipe
-@onready var track_1 = $track_1
+@onready var track = $track
 @onready var track_2 = $track_2
 
 # const N_PIPES = 1000
@@ -9,7 +9,7 @@ var tunnel_direction = Vector3(0, -1, 0)
 const TUNNEL_SEGMENT_HEIGHT = 0.5
 
 func _ready():
-	var track_parts = [track_1, track_2]
+	var track_parts = track.get_children()
 	for track in track_parts:
 		var track_location = track.transform.origin
 		var path: PathFollow3D = track.get_child(0)
