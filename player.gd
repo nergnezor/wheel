@@ -33,17 +33,21 @@ func _physics_process(delta):
 		was_pressed = false
 		
 		
-	var coll = get_colliding_bodies()
+	var colliding = get_colliding_bodies()
+	if (colliding.size() > 0):
+		timer = 0
+		return
+	
 	timer += delta
 	if (timer > TIMEOUT):
 		reset()
-
-func _on_body_entered(body):
-	timer = 0
-
-
-func _on_body_exited(body):
-	timer = 0
+#
+#func _on_body_entered(body):
+#	timer = 0
+#
+#
+#func _on_body_exited(body):
+#	timer = 0
 
 func reset():
 	print("Reset")
