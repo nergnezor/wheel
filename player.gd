@@ -47,7 +47,9 @@ func _on_body_exited(body):
 
 func reset():
 	print("Reset")
+	timer = 0
 	transform = start_transform
 	camera.transform.origin = start_transform.origin
 	linear_velocity = Vector3()
 	angular_velocity = Vector3()
+	
