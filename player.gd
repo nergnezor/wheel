@@ -1,7 +1,7 @@
 extends RigidBody3D
 @onready var orb: MeshInstance3D = $orb
 @onready var camera = get_node("../camera")
-@onready var orientation: Node3D = $orientor
+@onready var shape: CollisionShape3D = $shape
 
 var paused = false
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -34,3 +34,15 @@ func _physics_process(delta):
 	elif was_pressed:
 		material.emission = Color(1,0.8,0)
 		was_pressed = false
+		
+		
+	var coll = get_colliding_bodies()
+
+
+
+func _on_body_entered(body):
+	print("fevej")
+
+
+func _on_body_exited(body):
+	print(body)

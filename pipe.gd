@@ -1,11 +1,7 @@
 extends Node3D
 @onready var pipe = $pipe
 @onready var track = $track
-@onready var track_2 = $track_2
 
-# const N_PIPES = 1000
-var tunnel_direction = Vector3(0, -1, 0)
-# const TUNNEL_LENGTH = 500.0
 const TUNNEL_SEGMENT_HEIGHT = 1
 
 func _ready():
