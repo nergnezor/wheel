@@ -1,7 +1,8 @@
 extends RigidBody3D
 @onready var orb: MeshInstance3D = $orb
 @onready var camera = get_node("../camera")
-@onready var shape: CollisionShape3D = $shape
+var timer = 0
+const TIMEOUT = 5
 
 var paused = false
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -17,11 +18,7 @@ func _physics_process(delta):
 
 	# Reset button
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) or Input.is_action_just_pressed("ui_text_clear_carets_and_selection"):
-		print("Reset")
-		transform = start_transform
-		camera.transform.origin = start_transform.origin
-		linear_velocity = Vector3()
-		angular_velocity = Vector3()
+		reset()
 
 	var rot = get_rotation()
 	# Pause if space is pressed
@@ -37,12 +34,20 @@ func _physics_process(delta):
 		
 		
 	var coll = get_colliding_bodies()
-
-
+	timer += delta
+	if (timer > TIMEOUT):
+		reset()
 
 func _on_body_entered(body):
-	print("fevej")
+	timer = 0
 
 
 func _on_body_exited(body):
-	print(body)
+	timer = 0
+
+func reset():
+	print("Reset")
+	transform = start_transform
+	camera.transform.origin = start_transform.origin
+	linear_velocity = Vector3()
+	angular_velocity = Vector3()
