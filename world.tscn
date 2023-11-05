@@ -181,14 +181,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.588006, -0.95
 curve = SubResource("Curve3D_vtbks")
 
 [node name="path" type="PathFollow3D" parent="track/track_1"]
-transform = Transform3D(-1, -8.42012e-06, -0.00020096, 0, 0.999115, -0.0418625, 0.000201138, -0.0418624, -0.999116, 0, 0, 0)
+transform = Transform3D(-1, -1.53218e-05, -0.000150529, 0, 0.994851, -0.101262, 0.000151308, -0.101262, -0.994852, 0, 0, 0)
 
 [node name="track_2" type="Path3D" parent="track"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 4.56116, 48.0983)
 curve = SubResource("Curve3D_ruckd")
 
 [node name="path" type="PathFollow3D" parent="track/track_2"]
-transform = Transform3D(-0.999998, 0.000449846, 0.00210843, 0.000204188, 0.993346, -0.115095, -0.00214621, -0.115094, -0.993344, 0.00476074, -18.6242, 60.5522)
+transform = Transform3D(-1, -6.16106e-05, 8.03226e-08, -5.6576e-05, 0.918783, 0.394741, -2.43945e-05, 0.394741, -0.918783, 0.00476074, -17.7244, 58.7398)
 progress = 99.6852
 
 [node name="Path3D" type="Path3D" parent="track"]
@@ -196,7 +196,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.573823, 106.3
 curve = SubResource("Curve3D_ryxsg")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="track/Path3D"]
-transform = Transform3D(-2, 1.50909e-07, 8.8304e-08, -2.03288e-20, 1.01008, -1.72619, -1.74846e-07, -1.72619, -1.01008, -2.08165e-12, -68.8196, -33.2953)
+transform = Transform3D(-1, -6.08806e-08, -1.38178e-07, 0, 0.915115, -0.403194, 1.50996e-07, -0.403194, -0.915115, -2.08165e-12, -10.3755, 27.1443)
 
 [node name="CSGTorus3D" type="CSGTorus3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 32.7736, 280.8)
