@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://d0ua7g3mnws8m"]
+[gd_scene load_steps=21 format=3 uid="uid://d0ua7g3mnws8m"]
 
 [ext_resource type="Script" path="res://pipe.gd" id="1_seq2j"]
 [ext_resource type="Script" path="res://player.gd" id="2_urt46"]
@@ -99,6 +99,8 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mr06"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ocr2k"]
 emission_enabled = true
 emission = Color(0.796078, 0.741176, 0.298039, 1)
@@ -161,6 +163,18 @@ transform = Transform3D(0.999628, 0.0153669, -0.0225537, -0.00792931, 0.954295, 
 visible = false
 shadow_enabled = true
 
+[node name="win_label" type="Label3D" parent="camera"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.455)
+visible = false
+pixel_size = 0.001
+modulate = Color(0.317647, 0.576471, 0.45098, 1)
+outline_modulate = Color(0.141176, 0.290196, 0.160784, 1)
+text = "You win!"
+font_size = 125
+outline_size = 37
+width = 200.0
+
 [node name="track" type="Node3D" parent="."]
 unique_name_in_owner = true
 
@@ -193,6 +207,7 @@ use_collision = true
 radius = 12.559
 height = 6.536
 sides = 32
+material = SubResource("StandardMaterial3D_7mr06")
 
 [node name="CSGTorus3D" type="CSGTorus3D" parent="goal"]
 transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 11, 0)
@@ -201,11 +216,6 @@ outer_radius = 8.0
 sides = 64
 ring_sides = 12
 material = SubResource("StandardMaterial3D_ocr2k")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-text = "YOU WIN"
 
 [connection signal="body_entered" from="player" to="player" method="_on_body_entered"]
 [connection signal="body_exited" from="player" to="player" method="_on_body_exited"]

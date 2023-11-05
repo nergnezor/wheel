@@ -1,7 +1,7 @@
 extends RigidBody3D
 @onready var orb: MeshInstance3D = $orb
 @onready var camera = get_node("../camera")
-# @onready var goal = $goal
+@onready var win_label: Label3D = get_node("../camera/win_label")
 var timer = 0
 const TIMEOUT = 10
 
@@ -13,6 +13,8 @@ var was_pressed = false
 var spin_direction = 1
 var material: StandardMaterial3D
 var rotate_progress = 1
+var win_progress = 1
+
 func _ready():
 	start_transform = transform
 	material = orb.get_active_material(0)
@@ -57,6 +59,11 @@ func _physics_process(delta):
 		timer = 0
 		return
 	
+	if win_progress < 1:
+		win_progress += 0.1
+		win_label.transform.origin.z += 1
+
+
 	timer += delta
 	if (timer > TIMEOUT):
 		reset()
@@ -71,22 +78,14 @@ func reset():
 	camera.transform.origin = start_transform.origin
 	linear_velocity = Vector3()
 	angular_velocity = Vector3()
+	win_label.hide()
 	
 func win():
 	print("Win")
-	# Display win screen
-	# Get the win screen
-	var win_screen = get_node("../win_screen")
-#	win_screen.show()
-	# Pause the game
-	paused = true
-	# Reset the game after 5 seconds
-	# await(self, "win_screen_timeout")
-
-
-
-	# Reset
-	reset()
+	win_label.show()
+	linear_velocity = Vector3()
+	angular_velocity = Vector3()
+	timer = 0
 	
 func set_gravity():
 	PhysicsServer3D.area_set_param(get_world_3d().get_space(), PhysicsServer3D.AREA_PARAM_GRAVITY, gravity)
