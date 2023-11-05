@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c4vf53ksiebag"]
+[gd_scene load_steps=19 format=3 uid="uid://d0ua7g3mnws8m"]
 
 [ext_resource type="Script" path="res://pipe.gd" id="1_seq2j"]
 [ext_resource type="Script" path="res://player.gd" id="2_urt46"]
@@ -51,14 +51,14 @@ sky_material = SubResource("ProceduralSkyMaterial_ea3nv")
 
 [sub_resource type="Environment" id="Environment_a02rl"]
 background_mode = 1
-background_color = Color(0.235294, 0.152941, 0.556863, 1)
+background_color = Color(0.290196, 0.423529, 0.698039, 1)
+background_energy_multiplier = 0.55
 sky = SubResource("Sky_oxvgg")
 ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 16.0
 reflected_light_source = 2
 tonemap_mode = 1
-fog_enabled = true
 fog_light_color = Color(0.101961, 0.317647, 0.435294, 1)
 fog_density = 0.1211
 
@@ -174,14 +174,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.588006, -0.95
 curve = SubResource("Curve3D_vtbks")
 
 [node name="path" type="PathFollow3D" parent="track/track_1"]
-transform = Transform3D(-0.999999, -1.42451e-05, -0.00128514, 0, 0.99993, -0.0110838, 0.00128523, -0.0110838, -0.99993, 0, 0, 0)
+transform = Transform3D(-1, -8.42012e-06, -0.00020096, 0, 0.999115, -0.0418625, 0.000201138, -0.0418624, -0.999116, 0, 0, 0)
 
 [node name="track_2" type="Path3D" parent="track"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 4.56116, 48.0983)
 curve = SubResource("Curve3D_ruckd")
 
 [node name="path" type="PathFollow3D" parent="track/track_2"]
-transform = Transform3D(-1, 2.69422e-05, 1.12559e-05, 2.91926e-05, 0.914342, 0.404923, 6.17822e-07, 0.404923, -0.914342, 0.00476074, -18.6242, 60.5522)
+transform = Transform3D(-0.999998, 0.000449846, 0.00210843, 0.000204188, 0.993346, -0.115095, -0.00214621, -0.115094, -0.993344, 0.00476074, -18.6242, 60.5522)
 progress = 99.6852
 
 [node name="Path3D" type="Path3D" parent="track"]
@@ -189,7 +189,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -31.1691, 153.31
 curve = SubResource("Curve3D_ryxsg")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="track/Path3D"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+transform = Transform3D(-2, 1.50909e-07, 8.8304e-08, -2.03288e-20, 1.01008, -1.72619, -1.74846e-07, -1.72619, -1.01008, -2.08165e-12, -68.8196, -33.2953)
 
 [connection signal="body_entered" from="player" to="player" method="_on_body_entered"]
 [connection signal="body_exited" from="player" to="player" method="_on_body_exited"]

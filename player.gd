@@ -11,6 +11,7 @@ var start_transform
 var was_pressed = false
 var spin_direction = 1
 var material: StandardMaterial3D
+var rotate_progress = 1
 func _ready():
 	start_transform = transform
 	material = orb.get_active_material(0)
@@ -31,8 +32,19 @@ func _physics_process(delta):
 	elif was_pressed:
 		material.emission = Color(1,0.8,0)
 		was_pressed = false
-		
-		
+		# Switch gravity
+		gravity *= -1
+#		set_gravity()
+		spin_direction *= -1
+		rotate_progress = 0
+		# Rotate around the y axis
+		# apply_torque(Vector3(0,1,0) * 10)
+		# rotation.y = PI
+	if (rotate_progress < 1):
+		# rotate_y(0.1*PI)
+		# rotate_z(0.1*PI)
+		rotate_progress += 0.1
+	
 	var colliding = get_colliding_bodies()
 	if (colliding.size() > 0):
 		timer = 0
@@ -41,19 +53,16 @@ func _physics_process(delta):
 	timer += delta
 	if (timer > TIMEOUT):
 		reset()
-#
-#func _on_body_entered(body):
-#	timer = 0
-#
-#
-#func _on_body_exited(body):
-#	timer = 0
 
 func reset():
 	print("Reset")
 	timer = 0
+	gravity = 9.8
+	set_gravity()
 	transform = start_transform
 	camera.transform.origin = start_transform.origin
 	linear_velocity = Vector3()
 	angular_velocity = Vector3()
 	
+func set_gravity():
+	PhysicsServer3D.area_set_param(get_world_3d().get_space(), PhysicsServer3D.AREA_PARAM_GRAVITY, gravity)
