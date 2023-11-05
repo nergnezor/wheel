@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d0ua7g3mnws8m"]
+[gd_scene load_steps=20 format=3 uid="uid://d0ua7g3mnws8m"]
 
 [ext_resource type="Script" path="res://pipe.gd" id="1_seq2j"]
 [ext_resource type="Script" path="res://player.gd" id="2_urt46"]
@@ -94,12 +94,10 @@ point_count = 3
 
 [sub_resource type="Curve3D" id="Curve3D_ryxsg"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -2.08165e-12, -14.8127, 26.6694, 0, -21.207, -11.7817, 0, 21.207, 11.7817, -2.08165e-12, 6.83266, 74.7508),
+"points": PackedVector3Array(0, -0.898926, -0.898926, 0, 0, 0, -2.08165e-12, -10.3755, 27.1443, 0, -6.29243, -40.9008, 0, 6.29243, 40.9008, -2.08165e-12, 29.6263, 117.935),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mr06"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ocr2k"]
 emission_enabled = true
@@ -194,28 +192,29 @@ transform = Transform3D(-0.999998, 0.000449846, 0.00210843, 0.000204188, 0.99334
 progress = 99.6852
 
 [node name="Path3D" type="Path3D" parent="track"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.325095, 107.264)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.573823, 106.365)
 curve = SubResource("Curve3D_ryxsg")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="track/Path3D"]
 transform = Transform3D(-2, 1.50909e-07, 8.8304e-08, -2.03288e-20, 1.01008, -1.72619, -1.74846e-07, -1.72619, -1.01008, -2.08165e-12, -68.8196, -33.2953)
 
-[node name="goal" type="CSGCylinder3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, -1.74846e-07, 0, 1.74846e-07, 1, 0, 40.5163, 228.662)
-use_collision = true
-radius = 12.559
-height = 6.536
-sides = 32
-material = SubResource("StandardMaterial3D_7mr06")
-
-[node name="CSGTorus3D" type="CSGTorus3D" parent="goal"]
-transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 11, 0)
+[node name="CSGTorus3D" type="CSGTorus3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 32.7736, 280.8)
+visibility_parent = NodePath(".")
 inner_radius = 6.0
 outer_radius = 8.0
 sides = 64
 ring_sides = 12
 material = SubResource("StandardMaterial3D_ocr2k")
+
+[node name="goal" type="CSGCylinder3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 32.7736, 280.8)
+visible = false
+use_collision = true
+radius = 6.505
+height = 0.908
+sides = 32
 
 [connection signal="body_entered" from="player" to="player" method="_on_body_entered"]
 [connection signal="body_exited" from="player" to="player" method="_on_body_exited"]
