@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d0ua7g3mnws8m"]
+[gd_scene load_steps=20 format=3 uid="uid://d0ua7g3mnws8m"]
 
 [ext_resource type="Script" path="res://pipe.gd" id="1_seq2j"]
 [ext_resource type="Script" path="res://player.gd" id="2_urt46"]
@@ -80,24 +80,29 @@ data = PackedVector3Array(0.4901, 0.5, 4.9759, 0, 0.5, 5, 0, 0, 5, 0.4901, 0, 4.
 
 [sub_resource type="Curve3D" id="Curve3D_vtbks"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -0.00866699, -13.7962, -16.058, 0.00866699, 13.7962, 16.058, 0.00488281, 1.01665, 24.264),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -0.00866699, -8.49492, -18.3824, 0.00866699, 8.49492, 18.3824, 0.00488281, 3.28227, 32.2468),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
 
 [sub_resource type="Curve3D" id="Curve3D_ruckd"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.0452881, 14.8043, 24.6738, -0.0452881, -14.8043, -24.6738, 0.00476074, -23.6834, 9.88519),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -2.08165e-12, 3.03219, 2.15285, 0.0452881, 14.2017, -11.679, -0.0452881, -14.2017, 11.679, 0.00476074, -3.61725, 25.9046, 0, 0, 0, 0, 0, 0, 0.00476074, -17.7244, 58.7398),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_ryxsg"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -2.08165e-12, -14.8127, 26.6694, 0, -21.207, -11.7817, 0, 21.207, 11.7817, -2.08165e-12, 6.83266, 74.7508),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
 
-[sub_resource type="Curve3D" id="Curve3D_ryxsg"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -2.08165e-12, -26.1975, -10.8266, 0, -6.16847, -32.076, 0, 6.16847, 32.076, -2.08165e-12, -1.52372, 24.9504),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ocr2k"]
+emission_enabled = true
+emission = Color(0.796078, 0.741176, 0.298039, 1)
+emission_energy_multiplier = 7.91
 
 [node name="world" type="Node3D"]
 script = ExtResource("1_seq2j")
@@ -175,18 +180,32 @@ transform = Transform3D(-0.999998, 0.000449846, 0.00210843, 0.000204188, 0.99334
 progress = 99.6852
 
 [node name="Path3D" type="Path3D" parent="track"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -23.1501, 20.6962)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.325095, 107.264)
 curve = SubResource("Curve3D_ryxsg")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="track/Path3D"]
 transform = Transform3D(-2, 1.50909e-07, 8.8304e-08, -2.03288e-20, 1.01008, -1.72619, -1.74846e-07, -1.72619, -1.01008, -2.08165e-12, -68.8196, -33.2953)
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, -53.9886, 9.99788)
+[node name="goal" type="CSGCylinder3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, -1.74846e-07, 0, 1.74846e-07, 1, 0, 40.5163, 228.662)
+use_collision = true
 radius = 12.559
 height = 6.536
 sides = 32
-cone = true
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="goal"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 11, 0)
+inner_radius = 6.0
+outer_radius = 8.0
+sides = 64
+ring_sides = 12
+material = SubResource("StandardMaterial3D_ocr2k")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+text = "YOU WIN"
 
 [connection signal="body_entered" from="player" to="player" method="_on_body_entered"]
 [connection signal="body_exited" from="player" to="player" method="_on_body_exited"]

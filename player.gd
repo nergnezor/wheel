@@ -1,8 +1,9 @@
 extends RigidBody3D
 @onready var orb: MeshInstance3D = $orb
 @onready var camera = get_node("../camera")
+# @onready var goal = $goal
 var timer = 0
-const TIMEOUT = 5
+const TIMEOUT = 10
 
 var paused = false
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -34,19 +35,25 @@ func _physics_process(delta):
 		was_pressed = false
 		# Switch gravity
 		gravity *= -1
-#		set_gravity()
+		set_gravity()
 		spin_direction *= -1
 		rotate_progress = 0
 		# Rotate around the y axis
 		# apply_torque(Vector3(0,1,0) * 10)
 		# rotation.y = PI
 	if (rotate_progress < 1):
-		# rotate_y(0.1*PI)
+#		rotate_y(0.1*PI)
 		# rotate_z(0.1*PI)
 		rotate_progress += 0.1
 	
 	var colliding = get_colliding_bodies()
 	if (colliding.size() > 0):
+		if (colliding[0].get_name() == "goal"):
+			print("Goal")
+			win()
+			# Reset
+#			reset()
+#			return
 		timer = 0
 		return
 	
@@ -56,6 +63,7 @@ func _physics_process(delta):
 
 func reset():
 	print("Reset")
+	spin_direction = 1
 	timer = 0
 	gravity = 9.8
 	set_gravity()
@@ -63,6 +71,22 @@ func reset():
 	camera.transform.origin = start_transform.origin
 	linear_velocity = Vector3()
 	angular_velocity = Vector3()
+	
+func win():
+	print("Win")
+	# Display win screen
+	# Get the win screen
+	var win_screen = get_node("../win_screen")
+#	win_screen.show()
+	# Pause the game
+	paused = true
+	# Reset the game after 5 seconds
+	# await(self, "win_screen_timeout")
+
+
+
+	# Reset
+	reset()
 	
 func set_gravity():
 	PhysicsServer3D.area_set_param(get_world_3d().get_space(), PhysicsServer3D.AREA_PARAM_GRAVITY, gravity)
